@@ -429,17 +429,8 @@
                     </div>
 
                     </div>
-                    
 
-                    <div class="clear"></div><div class="line"></div>
-
-                    <div class="col_full nobottommargin">
-
-                        <h4>Related Products</h4>
-
-                        @include('partials.might-like')
-
-                    </div>
+                    @include('partials.might-like')
 
                 </div>
 

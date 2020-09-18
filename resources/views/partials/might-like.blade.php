@@ -1,3 +1,8 @@
+				<div class="clear"></div><div class="line"></div>
+
+                    <div class="col_full nobottommargin">
+
+                        <h4>Related Products</h4>
 
 
                         <div id="oc-product" class="owl-carousel product-carousel carousel-widget" data-margin="30" data-pagi="false" data-autoplay="5000" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-xl="4">
@@ -30,5 +35,5 @@
 
                             @endforeach
 
-
 						</div>
+			</div>
