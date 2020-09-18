@@ -425,6 +425,8 @@
                                 <div class="fslider" data-pagi="false" data-arrows="false" data-thumbs="true">
                                     <div class="flexslider">
                                         <div class="slider-wrap" data-lightbox="gallery">
+                                            
+                                            <div class="slide" data-thumb="{{asset('frontend/images/shop/thumbs/dress/3-2.jpg ')}}"><a href="{{asset('frontend/images/shop/dress/3-2.jpg')}}" title="Pink Printed Dress - Back View" data-lightbox="gallery-item"><img src="{{asset('frontend/images/shop/dress/3-2.jpg')}}" alt="Pink Printed Dress"></a></div>
                                             <div class="slide" data-thumb="{{asset('frontend/images/shop/thumbs/dress/3.jpg')}}"><a href="{{asset('frontend/images/shop/dress/3.jpg')}}" title="Pink Printed Dress - Front View" data-lightbox="gallery-item"><img src="{{asset('frontend/images/shop/dress/3.jpg')}}" alt="Pink Printed Dress"></a></div>
                                             <div class="slide" data-thumb="{{asset('frontend/images/shop/thumbs/dress/3-1.jpg')}}"><a href="{{asset('frontend/images/shop/dress/3-1.jpg')}}" title="Pink Printed Dress - Side View" data-lightbox="gallery-item"><img src="{{asset('frontend/images/shop/dress/3-1.jpg')}}" alt="Pink Printed Dress"></a></div>
                                             <div class="slide" data-thumb="{{asset('frontend/images/shop/thumbs/dress/3-2.jpg ')}}"><a href="{{asset('frontend/images/shop/dress/3-2.jpg')}}" title="Pink Printed Dress - Back View" data-lightbox="gallery-item"><img src="{{asset('frontend/images/shop/dress/3-2.jpg')}}" alt="Pink Printed Dress"></a></div>
@@ -437,12 +439,12 @@
                         </div>
 
                         <div class="col_two_fifth product-desc">
-                        <div class="product-name"><h2>Pink Printed Dress</h2> </div><!-- Product Single - Price End -->
+                        <div class="product-name"><h2>{{$product->name}}</h2> </div><!-- Product Single - Price End -->
 
 
                             <!-- Product Single - Price
                             ============================================= -->
-                            <div class="product-price"><del>$39.99</del> <ins>$24.99</ins></div><!-- Product Single - Price End -->
+                            <div class="product-price"><del>$39.99</del> <ins>{{$product->price}}</ins></div><!-- Product Single - Price End -->
 
                             <!-- Product Single - Rating
                             ============================================= -->
@@ -473,8 +475,7 @@
 
                             <!-- Product Single - Short Description
                             ============================================= -->
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero velit id eaque ex quae laboriosam nulla optio doloribus! Perspiciatis, libero, neque, perferendis at nisi optio dolor!</p>
-                            <p>Perspiciatis ad eveniet ea quasi debitis quos laborum eum reprehenderit eaque explicabo assumenda rem modi.</p>
+                            <p>{{$product->details}}</p>
                             <ul class="iconlist">
                                 <li><i class="icon-caret-right"></i> Dynamic Color Options</li>
                                 <li><i class="icon-caret-right"></i> Lots of Size Options</li>
@@ -577,8 +578,7 @@
                                 <div class="tab-container">
 
                                     <div class="tab-content clearfix" id="tabs-1">
-                                        <p>Pink printed dress,  woven, round neck with a keyhole and buttoned closure at the back, sleeveless, concealed zip up at left side seam, belt loops along waist with slight gathers beneath, brand appliqu?? above left front hem, has an attached lining.</p>
-                                        Comes with a white, slim synthetic belt that has a tang clasp.
+                                        <p>{{$product->excerpt}}</p>
                                     </div>
                                     <div class="tab-content clearfix" id="tabs-2">
 
