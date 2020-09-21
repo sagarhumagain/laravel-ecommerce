@@ -321,28 +321,21 @@
                                         <h4>Shopping Cart</h4>
                                     </div>
                                     <div class="top-cart-items">
+                                    @foreach ( Cart::content() as $item)
+
                                         <div class="top-cart-item clearfix">
                                             <div class="top-cart-item-image">
                                                 <a href="#"><img src="{{asset('frontend/demos/shop/images/items/featured/5.jpg')}}"
                                                         alt="Blue Shoulder Bag" /></a>
                                             </div>
                                             <div class="top-cart-item-desc">
-                                                <a href="#" class="t400">White athletic shoe</a>
-                                                <span class="top-cart-item-price">$35.00</span>
-                                                <span class="top-cart-item-quantity t600">x 1</span>
+                                                <a href="#" class="t400">{{$item->name}}</a>
+                                                <span class="top-cart-item-price">{{$item->price}}</span>
+                                                <span class="top-cart-item-quantity t600">1</span>
                                             </div>
                                         </div>
-                                        <div class="top-cart-item clearfix">
-                                            <div class="top-cart-item-image">
-                                                <a href="#" class="t400"><img src="{{asset('frontend/demos/shop/images/items/featured/1.jpg')}}"
-                                                        alt="Leather Bag" /></a>
-                                            </div>
-                                            <div class="top-cart-item-desc">
-                                                <a href="#" class="t400">Round Neck Solid Light Blue Colour T-shirts</a>
-                                                <span class="top-cart-item-price">$12.49</span>
-                                                <span class="top-cart-item-quantity t600">x 2</span>
-                                            </div>
-                                        </div>
+                                    @endforeach
+
                                     </div>
                                     <div class="top-cart-action clearfix">
                                         <span class="fleft top-checkout-price t600 text-dark">$59.98</span>

@@ -74,12 +74,16 @@
 
                             <!-- Product Single - Quantity & Cart Button
                             ============================================= -->
-                            <form class="cart nobottommargin clearfix" method="post" enctype='multipart/form-data'>
+                            <form class="cart nobottommargin clearfix" action="{{ route('cart.store')}}" method="post" enctype='multipart/form-data'>
+                                {{ csrf_field() }}
                                 <div class="quantity clearfix">
                                     <input type="button" value="-" class="minus">
                                     <input type="text" step="1" min="1"  name="quantity" value="1" title="Qty" class="qty" size="4" />
                                     <input type="button" value="+" class="plus">
                                 </div>
+                                <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
+                                <input type="hidden" name="price" value="{{$product->price}}">
                                 <button type="submit" class="add-to-cart button nomargin">Add to cart</button>
                             </form><!-- Product Single - Quantity & Cart Button End -->
 
