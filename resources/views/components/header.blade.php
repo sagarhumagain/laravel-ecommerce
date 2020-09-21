@@ -314,8 +314,12 @@
 
                             <!-- Top Cart
                             ============================================= -->
+                            <!-- showing onlyif cart has items -->
                             <div id="top-cart">
-                                <a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i><span>5</span></a>
+                                <a href="#" id="top-cart-trigger"><i class="icon-line-bag"></i>
+                                @if( Cart::count()>0 )
+                                <span>{{ Cart::count() }}</span>
+                                </a>
                                 <div class="top-cart-content">
                                     <div class="top-cart-title">
                                         <h4>Shopping Cart</h4>
@@ -334,14 +338,26 @@
                                                 <span class="top-cart-item-quantity t600">1</span>
                                             </div>
                                         </div>
-                                    @endforeach
 
+                                    @endforeach
                                     </div>
                                     <div class="top-cart-action clearfix">
-                                        <span class="fleft top-checkout-price t600 text-dark">$59.98</span>
-                                        <button class="button button-dark button-small nomargin fright">View Cart</button>
+                                        <span class="fleft top-checkout-price t600 text-dark">{{Cart::subtotal()}}</span>
+                                        <a href="{{ route('cart.index')}}" class="button button-dark button-small nomargin fright">View Cart</a>
                                     </div>
                                 </div>
+                                @else
+                                <div class="top-cart-content">
+                                    <div class="top-cart-title">
+                                        <h4>Shopping Cart</h4>
+                                    </div>
+                                    <div class="top-cart-items">
+                                    <h3 class="nobottommargin">No items in cart</h3>
+                                    </div>
+                                </div>
+                                
+
+                                @endif
                             </div><!-- #top-cart end -->
 
                                 @if (Route::has('login'))

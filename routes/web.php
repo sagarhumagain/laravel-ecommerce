@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SaveForLaterController;
+
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 
@@ -29,12 +31,24 @@ Route::get('/shop/{product}', [ShopController::class, 'show'])->name('shop.show'
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 //storing product to cart
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+//removing item from cart
+Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
+//save for later
+Route::post('/cart/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveToLater'])->name('cart.switchToSaveToLater');
+//removing item from save fro later
+Route::delete('/saveForLater/{product}', [SaveForLaterController::class, 'destroy'])->name('saveForLater.destroy');
+//save for later
+Route::post('/cart/switchToCart/{product}', [SaveForLaterController::class, 'switchToCart'])->name('switchToCart.switchToCart');
+
+
 
 //distroy or empty cart
 Route::get('/empty', function(){
     Cart::destroy();
 });
-
+Route::get('/savedempty', function(){
+    Cart::instance("saveForLater")->destroy();
+});
 
 
 

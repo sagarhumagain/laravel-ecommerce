@@ -24,6 +24,23 @@
                 <div class="container clearfix">
 
                     <div class="postcontent nobottommargin clearfix col_last">
+                    <!-- success/fail message for cart -->
+						@if(session()->has('success_message'))
+						<div class="btn btn-success bottommargin">
+						{{ session()->get('success_message')}}
+						</div>
+						@endif
+						@if(count($errors)> 0)
+						<div class="btn btn-danger">
+							<ul>
+							@foreach($errors->all() as $error)
+							<li>{{$error}}</li>
+							@endforeach
+							</ul>
+						</div>
+						@endif
+						<!-- success/fail message for cart end-->
+
                         <div id="shop" class="shop product-3 grid-container clearfix" data-layout="fitRows">
                             @foreach($products as $product)
                             <div class="product clearfix">

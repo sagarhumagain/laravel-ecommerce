@@ -63,7 +63,16 @@
 							@foreach ( Cart::content() as $item)
 								<tr class="cart_item">
 									<td class="cart-product-remove">
-										<a href="#" class="remove" title="Remove this item"><i class="icon-trash2"></i>  Remove</a><br>  <a href="#" class="" title="Save for Later"><i class="icon-shopping-cart"></i> Save for Later</a>
+									<form class="nobottommargin"action="{{ route('cart.destroy', $item->rowId) }}" method="post">
+									{{csrf_field()}}
+									{{method_field('DELETE')}}
+									<button class="remove" title="Remove this item"><i class="icon-trash2"></i>  Remove</button> 
+									</form>
+									<br>
+									<form class="nobottommargin"action="{{ route('cart.switchToSaveToLater', $item->rowId) }}" method="post">
+									{{csrf_field()}}
+									<button class="" title="Save for Later"><i class="icon-shopping-cart"></i> Save for Later</button>
+									</form>
 
 									</td>
 
@@ -132,16 +141,16 @@
 											</td>
 
 											<td class="cart-product-name">
-												<span class="amount">$106.94</span>
+												<span class="amount">{{ Cart::subtotal() }}</span>
 											</td>
 										</tr>
 										<tr class="cart_item">
 											<td class="cart-product-name">
-												<strong>Shipping</strong>
+												<strong>Tax</strong>
 											</td>
 
 											<td class="cart-product-name">
-												<span class="amount">Free Delivery</span>
+												<span class="amount">{{Cart::tax()}}</span>
 											</td>
 										</tr>
 										<tr class="cart_item">
@@ -150,7 +159,7 @@
 											</td>
 
 											<td class="cart-product-name">
-												<span class="amount color lead"><strong>$106.94</strong></span>
+												<span class="amount color lead"><strong>{{Cart::total()}}</strong></span>
 											</td>
 										</tr>
 									</tbody>
@@ -161,13 +170,16 @@
 					</div>
 					@else
 					 <h2>No items in cart</h2>
-					 <a href="#" class="button button-3d nomargin" style="margin-right:40px !important">Continue Shopping</a>
+					 <a href="{{ route('shop.index')}}" class="button button-3d nomargin" style="margin-right:40px !important">Continue Shopping</a>
 
 					@endif
 
 
 					<div class="table-responsive topmargin">
-						<h2>2 items saved for later</h2>
+					@if (Cart::instance('saveForLater')->count() > 0)
+
+
+					<h2> {{ Cart::instance('saveForLater')->count() }} items saved for later</h2>
 						<table class="table cart">
 							<thead>
 								<tr>
@@ -181,51 +193,34 @@
 								</tr>
 							</thead>
 							<tbody>
+							@foreach ( Cart::instance('saveForLater')->content() as $item)
+
 								<tr class="cart_item">
 									<td class="cart-product-remove">
-									<a href="#" class="remove" title="Remove this item"><i class="icon-trash2"></i>  Remove</a><br>  <a href="#" class="" title="Save for Later"><i class="icon-shopping-cart"></i>Add to cart</a>
+									
+									<form class="nobottommargin"action="{{ route('saveForLater.destroy', $item->rowId) }}" method="post">
+									{{csrf_field()}}
+									{{method_field('DELETE')}}
+									<button class="remove" title="Remove this item"><i class="icon-trash2"></i>  Remove</button> 
+									</form>
+									<br>
+									<form class="nobottommargin"action="{{ route('switchToCart.switchToCart', $item->rowId) }}" method="post">
+									{{csrf_field()}}
+									<button class="" title="switch to cart"><i class="icon-shopping-cart"></i> Switch to Cart</button>
+									</form>
 
 									</td>
 
 									<td class="cart-product-thumbnail">
-										<a href="#"><img width="64" height="64" src="images/shop/thumbs/small/dress-3.jpg" alt="Pink Printed Dress"></a>
+										<a href=""><img width="64" height="64" src="{{asset('frontend/images/shop/thumbs/dress/3.jpg')}}" alt="Pink Printed Dress"></a>
 									</td>
 
 									<td class="cart-product-name">
-										<a href="#">Pink Printed Dress</a>
+										<a href=''>{{ $item->name }}</a>
 									</td>
 
 									<td class="cart-product-price">
-										<span class="amount">$19.99</span>
-									</td>
-
-									<td class="cart-product-quantity">
-										<div class="quantity clearfix">
-											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="2" class="qty" />
-											<input type="button" value="+" class="plus">
-										</div>
-									</td>
-
-									<td class="cart-product-subtotal">
-										<span class="amount">$39.98</span>
-									</td>
-								</tr>
-								<tr class="cart_item">
-									<td class="cart-product-remove">
-										<a href="#" class="remove" title="Remove this item"><i class="icon-trash2"></i></a>
-									</td>
-
-									<td class="cart-product-thumbnail">
-										<a href="#"><img width="64" height="64" src="images/shop/thumbs/small/shoes-2.jpg" alt="Checked Canvas Shoes"></a>
-									</td>
-
-									<td class="cart-product-name">
-										<a href="#">Checked Canvas Shoes</a>
-									</td>
-
-									<td class="cart-product-price">
-										<span class="amount">$24.99</span>
+										<span class="amount">{{ $item->price}}</span>
 									</td>
 
 									<td class="cart-product-quantity">
@@ -237,41 +232,20 @@
 									</td>
 
 									<td class="cart-product-subtotal">
-										<span class="amount">$24.99</span>
+										<span class="amount">{{ $item->price }}</span>
 									</td>
 								</tr>
-								<tr class="cart_item">
-									<td class="cart-product-remove">
-										<a href="#" class="remove" title="Remove this item"><i class="icon-trash2"></i></a>
-									</td>
+								@endforeach
 
-									<td class="cart-product-thumbnail">
-										<a href="#"><img width="64" height="64" src="images/shop/thumbs/small/tshirt-2.jpg" alt="Pink Printed Dress"></a>
-									</td>
 
-									<td class="cart-product-name">
-										<a href="#">Blue Men Tshirt</a>
-									</td>
-
-									<td class="cart-product-price">
-										<span class="amount">$13.99</span>
-									</td>
-
-									<td class="cart-product-quantity">
-										<div class="quantity clearfix">
-											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="3" class="qty" />
-											<input type="button" value="+" class="plus">
-										</div>
-									</td>
-
-									<td class="cart-product-subtotal">
-										<span class="amount">$41.97</span>
-									</td>
-								</tr>
 							</tbody>
 
 						</table>
+						@else
+						<h2> You have no item saved for later</h2>
+
+						@endif
+
 					</div>
 					@include('partials.might-like')
 
