@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SaveForLaterController;
+use App\Http\Controllers\CheckOutController;
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -37,8 +38,10 @@ Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart
 Route::post('/cart/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveToLater'])->name('cart.switchToSaveToLater');
 //removing item from save fro later
 Route::delete('/saveForLater/{product}', [SaveForLaterController::class, 'destroy'])->name('saveForLater.destroy');
-//save for later
+//move to cart from save for later
 Route::post('/cart/switchToCart/{product}', [SaveForLaterController::class, 'switchToCart'])->name('switchToCart.switchToCart');
+//checkout
+Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout.index');
 
 
 

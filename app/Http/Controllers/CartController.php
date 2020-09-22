@@ -46,9 +46,9 @@ class CartController extends Controller
         if ($duplicates->isNotEmpty()) {
             return redirect()->route('shop.index')->with('success_message', 'Item is already in your cart!');
         }
-        $cart = Cart::add($request->id,$request->name, 1, $request->price)
+        $cart = Cart::add($request->id,$request->name, $request->quantity, $request->price)
         ->associate('App\Models\Product');
-        //            dd($cart);
+                  // dd($cart);
         return redirect()->route('shop.index')->with('success_message', 'Item was added to your cart!');
     }    
 
@@ -119,7 +119,7 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('success_message', 'Item is already in saved for later!');
         }
 
-        Cart::instance('saveForLater')->add($item->id, $item->name, 1, $item->price)
+        Cart::instance('saveForLater')->add($item->id, $item->name, $item->qty, $item->price)
         ->associate('App\Models\Product');
 
         return redirect()->route('cart.index')->with('success_message', 'Item has been Saved For Later!');

@@ -91,13 +91,13 @@
 									<td class="cart-product-quantity">
 										<div class="quantity clearfix">
 											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="1" class="qty" />
+											<input type="text" name="quantity" value="{{ $item->qty }}" class="qty" />
 											<input type="button" value="+" class="plus">
 										</div>
 									</td>
 
 									<td class="cart-product-subtotal">
-										<span class="amount">{{ $item->price }}</span>
+										<span class="amount"> {{ $item->price * $item->qty }}</span>
 									</td>
 								</tr>
 							@endforeach
@@ -116,7 +116,7 @@
 												</div>
 											</div>
 											<div class="col-lg-8 col-8 nopadding">
-												<a href="shop.html" class="button button-3d notopmargin fright" >Proceed to Checkout</a>
+												<a href="{{ route('checkout.index')}}" class="button button-3d notopmargin fright" >Proceed to Checkout</a>
 
 											</div>
 										</div>
@@ -226,13 +226,13 @@
 									<td class="cart-product-quantity">
 										<div class="quantity clearfix">
 											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="1" class="qty" />
+											<input type="text" name="quantity" value="{{ $item->qty}}" class="qty" />
 											<input type="button" value="+" class="plus">
 										</div>
 									</td>
 
 									<td class="cart-product-subtotal">
-										<span class="amount">{{ $item->price }}</span>
+										<span class="amount">{{ $item->price * $item->qty }}</span>
 									</td>
 								</tr>
 								@endforeach
