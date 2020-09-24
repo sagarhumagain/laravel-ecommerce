@@ -36217,8 +36217,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //vue
 
 
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js"); //axios
+
+var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js")["default"];
 /*Start of Vue Routes*/
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]); //defining all routes of vue

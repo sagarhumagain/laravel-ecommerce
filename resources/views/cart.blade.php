@@ -90,9 +90,9 @@
 
 									<td class="cart-product-quantity">
 										<div class="quantity clearfix">
-											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="{{ $item->qty }}" class="qty" />
-											<input type="button" value="+" class="plus">
+											<input type="button" value="-" class="minus"  data-id="{{$item->rowId}}">
+											<input type="text" name="quantity" value="{{ $item->qty }}" class="qty" data-id="{{ $item->rowId }}"/>
+											<input type="button" value="+" class="plus" data-id="{{$item->rowId}}">
 										</div>
 									</td>
 
@@ -225,9 +225,7 @@
 
 									<td class="cart-product-quantity">
 										<div class="quantity clearfix">
-											<input type="button" value="-" class="minus">
-											<input type="text" name="quantity" value="{{ $item->qty}}" class="qty" />
-											<input type="button" value="+" class="plus">
+											<input type="text" name="quantity" value="{{ $item->qty }}" class="qty"/>
 										</div>
 									</td>
 
@@ -254,4 +252,89 @@
 			</div>
 
 		</section><!-- #content end -->
+
+		<script>
+			(function(){
+				const classname = document.querySelectorAll('.qty')
+
+				Array.from(classname).forEach(function(element) {
+					element.addEventListener('change', function() {
+						const id = element.getAttribute('data-id')
+						var inputQuantityNo = $('.qty');
+						var newQuantity = parseInt($(inputQuantityNo).val());
+
+
+						axios.patch(`/cart/${id}`, {
+							quantity: newQuantity,
+						})
+						.then(function (response) {
+							 console.log(response);
+							window.location.href = '{{ route('cart.index') }}'
+						})
+						.catch(function (error) {
+							// console.log(error);
+							window.location.href = '{{ route('cart.index') }}'
+						});
+					})
+				})
+			})();
+		</script>
+
+		<script>
+        (function(){
+            const classname = document.querySelectorAll('.minus')
+				Array.from(classname).forEach(function(element) {
+					element.addEventListener('click', function() {
+						const id = element.getAttribute('data-id')
+						var inputQuantityNo = $('.qty');
+						var newQuantity = parseInt($(inputQuantityNo).val()) - 1;
+						//console.log(newQuantity);
+					
+						axios.patch(`/cart/${id}`, {
+							quantity: newQuantity,
+						})
+						.then(function (response) {
+							//console.log(response);
+							window.location.href = '{{ route('cart.index') }}'
+						})
+						.catch(function (error) {
+							//console.log(error);
+							window.location.href = '{{ route('cart.index') }}'
+						});
+					})
+				})
+				
+
+			})();
+		</script>
+		<script>
+        (function(){
+            const classname = document.querySelectorAll('.plus')
+				Array.from(classname).forEach(function(element) {
+					element.addEventListener('click', function() {
+						const id = element.getAttribute('data-id')
+						var inputQuantityNo = $('.qty');
+						var newQuantity = parseInt($(inputQuantityNo).val()) + 1;
+						//console.log(newQuantity);
+					
+						axios.patch(`/cart/${id}`, {
+							quantity: newQuantity,
+						})
+						.then(function (response) {
+							//console.log(response);
+							window.location.href = '{{ route('cart.index') }}'
+						})
+						.catch(function (error) {
+							// console.log(error);
+							window.location.href = '{{ route('cart.index') }}'
+						});
+					})
+				})
+				
+
+			})();
+		</script>
+		
+			
+						
 @include('components.footer')

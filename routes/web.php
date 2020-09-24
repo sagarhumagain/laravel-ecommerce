@@ -34,10 +34,16 @@ Route::get('/shop/{product}', [ShopController::class, 'show'])->name('shop.show'
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 //storing product to cart
 Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
+//updating card quantity
+Route::patch('/cart/{product}',[CartController::class, 'update'])->name('cart.update');
+
 //removing item from cart
 Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 //save for later
 Route::post('/cart/switchToSaveForLater/{product}', [CartController::class, 'switchToSaveToLater'])->name('cart.switchToSaveToLater');
+//save for later cart update
+//Route::post('/cart/switchToSaveForLater/{product}', [CartController::class, 'update'])->name('cart.update');
+
 //removing item from save fro later
 Route::delete('/saveForLater/{product}', [SaveForLaterController::class, 'destroy'])->name('saveForLater.destroy');
 //move to cart from save for later

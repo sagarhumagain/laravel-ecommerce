@@ -3,7 +3,11 @@ require('./bootstrap');
 //vue
 import Vue from 'vue';
 
+
 window.Vue = require('vue');
+
+//axios
+const axios = require('axios').default;
 
 /*Start of Vue Routes*/
 import VueRouter from 'vue-router';

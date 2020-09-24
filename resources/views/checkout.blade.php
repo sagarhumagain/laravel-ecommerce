@@ -78,7 +78,33 @@
                                     </div>
                                 </div>
                                 <!-- checkout form -->
+                                    <!-- <div class="hidden">
+									<input type="text"  name="tAmt" value="{{Cart::total()}}" />
+								    </div>
                                     <div class="hidden">
+									<input type="text"  name="amt" value="{{Cart::subtotal()}}" />
+								    </div>
+                                    <div class="hidden">
+									<input type="text"  name="txAmt" value="{{Cart::tax()}}" />
+								    </div>
+                                    <div class="hidden">
+									<input name="psc" value="0" />
+								    </div>
+                                    <div class="hidden">
+                                    <input value="3" name="pdc" />
+								    </div>
+                                    <div class="hidden">
+                                    <input value="epay_payment" name="scd">
+								    </div>
+                                    <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
+                                    <input value="{{ route('esewa.success')}}" type="hidden" name="su">
+                                    <input value="{{ route('checkout.index')}}" type="hidden" name="fu">
+                                    <div class="form-group">
+									<button type="submit" name="checkout-form-submit" class="btn  btn-secondary btn-success">Complete Order</button>
+								    </div>
+                             </div> -->
+                             <!-- checkout with stripe -->
+                             <div class="hidden">
 									<input type="text"  name="tAmt" value="{{Cart::total()}}" />
 								    </div>
                                     <div class="hidden">
@@ -103,6 +129,7 @@
 									<button type="submit" name="checkout-form-submit" class="btn  btn-secondary btn-success">Complete Order</button>
 								    </div>
                              </div>
+
                              
                             
 							<div class="col-lg-6 mt-5 mt-lg-0">
