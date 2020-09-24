@@ -27,7 +27,7 @@
 
 						<!-- <div class="form-result"></div> -->
 
-						<form class="row" id="checkout-form" action="include/form.php" method="post" enctype="multipart/form-data">
+						<form class="row" id="checkout-form" action="https://uat.esewa.com.np/epay/main" method="post" enctype="multipart/form-data">
 							<div class="form-process"></div>
 							<div class="col-lg-6">
 								<div class="row checkout-form-billing">
@@ -37,11 +37,11 @@
 									
 									<div class="col-12 form-group">
 										<label>Email:</label>
-										<input type="email" name="checkout-form-billing-email" id="checkout-form-billing-email" class="form-control required" value="" placeholder="user@company.com">
+										<input type="email" name="checkout-form-billing-email" id="checkout-form-billing-email" class="form-control required" value="" placeholder="Email">
                                     </div>
                                     <div class="col-12 form-group">
 										<label>Name:</label>
-										<input type="text" name="checkout-form-billing-name" id="checkout-form-billing-name" class="form-control required" value="" placeholder="John Doe">
+										<input type="text" name="checkout-form-billing-name" id="checkout-form-billing-name" class="form-control required" value="" placeholder="Full Name">
 									</div>
 									<div class="col-12 form-group">
 										<label>Address:</label>
@@ -61,10 +61,10 @@
 									</div>
 									<div class="col-6 form-group">
 										<label>Phone:</label><br>
-										<input type="text" name="checkout-form-billing-phone" id="checkout-form-billing-phone" class="form-control required" value="" placeholder="02-232-2424">
+										<input type="text" name="checkout-form-billing-phone" id="checkout-form-billing-phone" class="form-control required" value="" >
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-12 topmargin">
 										<h3>Payment Information</h3>
 									</div>
 									
@@ -76,17 +76,32 @@
 										<label>Name:</label>
 										<input type="text" name="checkout-form-billing-name" id="checkout-form-billing-name" class="form-control required" value="" placeholder="John Doe">
                                     </div>
-                                    
-                                    
                                 </div>
                                 <!-- checkout form -->
-                                <div class="hidden">
-									<input type="text" id="checkout-form-botcheck" name="checkout-form-botcheck" value="" />
-								</div>
-								<div class="form-group">
+                                    <div class="hidden">
+									<input type="text"  name="tAmt" value="{{Cart::total()}}" />
+								    </div>
+                                    <div class="hidden">
+									<input type="text"  name="amt" value="{{Cart::subtotal()}}" />
+								    </div>
+                                    <div class="hidden">
+									<input type="text"  name="txAmt" value="{{Cart::tax()}}" />
+								    </div>
+                                    <div class="hidden">
+									<input name="psc" value="0" />
+								    </div>
+                                    <div class="hidden">
+                                    <input value="3" name="pdc" />
+								    </div>
+                                    <div class="hidden">
+                                    <input value="epay_payment" name="scd">
+								    </div>
+                                    <input value="ee2c3ca1-696b-4cc5-a6be-2c40d929d453" name="pid" type="hidden">
+                                    <input value="{{ route('esewa.success')}}" type="hidden" name="su">
+                                    <input value="{{ route('checkout.index')}}" type="hidden" name="fu">
+                                    <div class="form-group">
 									<button type="submit" name="checkout-form-submit" class="btn  btn-secondary btn-success">Complete Order</button>
-								</div>
-                                <input type="hidden" name="prefix" value="checkout-form-">
+								    </div>
                              </div>
                              
                             

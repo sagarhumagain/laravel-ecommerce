@@ -6,6 +6,8 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\SaveForLaterController;
 use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\EsewaController;
+
 
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -42,6 +44,10 @@ Route::delete('/saveForLater/{product}', [SaveForLaterController::class, 'destro
 Route::post('/cart/switchToCart/{product}', [SaveForLaterController::class, 'switchToCart'])->name('switchToCart.switchToCart');
 //checkout
 Route::get('/checkout', [CheckOutController::class, 'index'])->name('checkout.index');
+//esewa
+Route::get('/checkout/success', [EsewaController::class, 'store'])->name('esewa.success');
+
+
 
 
 
