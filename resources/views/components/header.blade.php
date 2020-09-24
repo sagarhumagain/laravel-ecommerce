@@ -335,7 +335,7 @@
                                             <div class="top-cart-item-desc">
                                                 <a href="#" class="t400">{{$item->name}}</a>
                                                 <span class="top-cart-item-price">{{$item->price}}</span>
-                                                <span class="top-cart-item-quantity t600">1</span>
+                                                <span class="top-cart-item-quantity t600">×{{ $item->qty }}</span>
                                             </div>
                                         </div>
 
