@@ -15,7 +15,6 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('product_id');
             $table->float('price');
             $table->string('invoice_no');
             $table->tinyInteger('status')->default(0);

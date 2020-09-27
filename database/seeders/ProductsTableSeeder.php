@@ -16,7 +16,7 @@ class ProductsTableSeeder extends Seeder
     public function run()
     {
         // Laptops
-        for ($i=1; $i <= 30; $i++) {
+        for ($i=1; $i <= 10; $i++) {
             Product::create([
                 'name' => 'Laptop '.$i,
                 'slug' => 'laptop-'.$i,

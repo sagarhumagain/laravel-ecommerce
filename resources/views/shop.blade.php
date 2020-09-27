@@ -9,7 +9,10 @@
                 <span>Start Buying your Favourite Product</span>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Shop</li>
+
+                    <li class="breadcrumb-item active" aria-current="page"> {{ $categoryName }}</li>
+
+
                 </ol>
             </div>
 
@@ -42,7 +45,7 @@
 						<!-- success/fail message for cart end-->
 
                         <div id="shop" class="shop product-3 grid-container clearfix" data-layout="fitRows">
-                            @foreach($products as $product)
+                            @forelse($products as $product)
                             <div class="product clearfix">
                                 <div class="product-image">
                                     <a href="{{ route('shop.show', $product->slug) }}"> <img src="{{asset('frontend/images/shop/dress/1.jpg')}}" alt="Checked Short Dress"></a>
@@ -65,7 +68,11 @@
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
+                            @empty
+                             <div class="product clearfix">
+                             <h2 class="center">No items Found</h2>
+                             </div>
+                            @endforelse
                         </div>
                     </div>
 
@@ -76,10 +83,12 @@
 
                                 <h4>Shop Categories</h4>
                                 <ul>
+                                <!-- filtering product with category name  -->
                                 @foreach($categories as $category)
                                     <li><a href="{{ route('shop.index',['category' => $category->slug])}}">{{$category->name}}</a></li>
                                     
                                 @endforeach
+
                                 </ul>
 
                             </div>
