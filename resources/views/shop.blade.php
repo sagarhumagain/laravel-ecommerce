@@ -25,6 +25,7 @@
             <div class="content-wrap">
 
                 <div class="container clearfix">
+                    
 
                     <div class="postcontent nobottommargin clearfix col_last">
                     <!-- success/fail message for cart -->
@@ -80,6 +81,16 @@
                         <div class="sidebar-widgets-wrap">
 
                             <div class="widget widget_links clearfix">
+                                <h4>Price Sort By</h4>
+                                <ul>
+                                <li><a href="{{ route('shop.index', ['category'=> request()->category, 'sort' => 'low_high']) }}">Low to High</a> </li>
+
+                                 <li><a href="{{ route('shop.index', ['category'=> request()->category, 'sort' => 'high_low']) }}">High to Low</a></li>
+
+                             </ul>
+                             </div>
+
+                            <div class="widget widget_links clearfix">
 
                                 <h4>Shop Categories</h4>
                                 <ul>
@@ -92,6 +103,8 @@
                                 </ul>
 
                             </div>
+
+                            
 
                             <div class="widget clearfix">
 

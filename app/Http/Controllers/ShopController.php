@@ -32,6 +32,14 @@ class ShopController extends Controller
             $categoryName = 'Featured';
 
         }
+        if(request()->sort == 'high_low'){
+            $products = $products->sortBydesc('price');
+             
+        }
+        elseif(request()->sort == 'low_high'){
+            $products = $products->sortBy('price');
+        }
+
 
 
 
